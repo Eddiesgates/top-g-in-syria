@@ -1,0 +1,206 @@
+Eddie, [1/22/2025 8:33 PM]
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top G in Syria
+AKA: Hasan Al Zeze</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                        url('istockphoto-113494458-612x612.jpg') center/cover no-repeat;
+            color: white;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 0;
+            background: linear-gradient(45deg, #ff4d4d, #ff9933);
+            margin-bottom: 40px;
+            box-shadow: 0 4px 15px rgba(255, 77, 77, 0.5);
+            border-radius: 0 0 20px 20px;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            animation: pulse 2s infinite;
+        }
+
+        .upload-section {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            border: 2px solid #ff4d4d;
+        }
+
+        .upload-section h2 {
+            color: #ff9933;
+            margin-bottom: 20px;
+        }
+
+        .upload-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .custom-file-upload {
+            display: inline-block;
+            padding: 15px 25px;
+            background: linear-gradient(45deg, #ff4d4d, #ff9933);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .custom-file-upload:hover {
+            transform: scale(1.05);
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .gallery-item {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid #ff4d4d;
+            position: relative;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        .delete-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255, 0, 0, 0.8);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes flames {
+            0% { box-shadow: 0 0 20px #ff4d4d; }
+            50% { box-shadow: 0 0 40px #ff9933; }
+            100% { box-shadow: 0 0 20px #ff4d4d; }
+        }
+
+        .button {
+            background: linear-gradient(45deg, #ff4d4d, #ff9933);
+            border: none;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            animation: flames 2s infinite;
+        }
+
+        .button:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Top G in Syria</h1>
+    </header>
+
+Eddie, [1/22/2025 8:33 PM]
+<div class="container">
+        <section class="upload-section">
+            <h2>Upload Your Photos</h2>
+            <form class="upload-form" id="uploadForm">
+                <label class="custom-file-upload">
+                    <input type="file" accept="image/*" multiple id="imageInput">
+                    Choose Files
+                </label>
+            </form>
+        </section>
+
+        <div class="gallery" id="imageGallery">
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('imageInput').addEventListener('change', function(e) {
+            const files = e.target.files;
+            const gallery = document.getElementById('imageGallery');
+
+            for (let file of files) {
+                if (file.type.startsWith('image/')) {
+                    const reader = new FileReader();
+                    reader.onload = function(event) {
+                        const galleryItem = document.createElement('div');
+                        galleryItem.className = 'gallery-item';
+                        
+                        const img = document.createElement('img');
+                        img.src = event.target.result;
+                        img.alt = file.name;
+                        
+                        const deleteBtn = document.createElement('button');
+                        deleteBtn.className = 'delete-btn';
+                        deleteBtn.innerHTML = '×';
+                        deleteBtn.onclick = function() {
+                            gallery.removeChild(galleryItem);
+                        };
+                        
+                        galleryItem.appendChild(img);
+                        galleryItem.appendChild(deleteBtn);
+                        gallery.appendChild(galleryItem);
+                    };
+                    reader.readAsDataURL(file);
+                }
+            }
+            // Reset the form to allow uploading the same image again
+            document.getElementById('uploadForm').reset();
+        });
+    </script>
+</body>
+</html>
